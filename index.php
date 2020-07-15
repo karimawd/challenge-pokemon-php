@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET['poke'])); {
+    $pokeData = file_get_contents('https://pokeapi.co/api/v2/pokemon/' . $_GET['poke']);
+    $dataSorting = json_decode($pokeData, true);
+    $id = $dataSorting['id'];
+    var_dump($dataSorting);  // (dump info about a variable. Displays structured info such as type and value of the given variable)
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,10 +33,10 @@
     </header>
     <!-- Main -->
     <main>
-        <section class="input-field">
+        <form method="get" action="index.php" class="input-field">
             <input id="input" type="text" autocomplete="off" name="poke" placeholder="ID or Name Pokemon">
-            <button id="button" aria-label="startSearch" type="button" class="btn btn-danger">I choose you</button>
-        </section>
+            <input id="button" aria-label="startSearch" type="submit" class="btn btn-danger" value="I choose you">
+        </form>
         <section id="background">
             <div class="img-text" id="img-photo">
                 <div id="pokeId" class="text-center"></div>
